@@ -132,7 +132,6 @@ export default function Todo() {
                         <option value={4}>4</option>
                         <option value={5}>5</option>
                     </select>
-
                     <motion.button
                         whileTap={{ scale: 0.9, transition: { duration: 0.1 } }}
                         onClick={() => {
@@ -144,8 +143,6 @@ export default function Todo() {
 
                     {isEditing ? <button className="text-rose-600 hover:bg-rose-400 hover:text-white font-montserrat  py-2 px-8 font-medium rounded-xl transition-all duration-300" onClick={() => clearEdit()}>CANCEL</button> : null}
                 </div>
-
-
             </div>
 
             <div className="flex items-center space-x-0 w-full lg:w-1/2 flex-col md:flex-row md:space-x-8">
@@ -163,7 +160,6 @@ export default function Todo() {
                     className="text-emerald-500 hover:bg-emerald-400 hover:text-white font-montserrat my-2 py-2 px-8 font-medium rounded-xl transition-all duration-300 w-1/2">
                     Get by Date
                 </button>
-
             </div>
 
             <div className="grid grid-cols-1 mx-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 ">
@@ -172,6 +168,9 @@ export default function Todo() {
                         <div onDoubleClick={() => { updateTodo(todo) }} key={todo.id} className={`relative flex-grow p-4 space-x-2 justify-center ${todo.state ? "bg-emerald-700 hover:bg-emerald-600 hover:shadow-md hover:shadow-stone-400" : "bg-stone-800 hover:bg-stone-900 hover:shadow-md hover:shadow-stone-700"}  text-white rounded-lg outline-none focus:outline-none capitalize   transition-all duration-300 cursor-pointer`}>
                             <p className="text-xl font-semibold">{todo.title}</p>
                             <p className="text-sm mb-4">{todo.description}</p>
+                            <p className="text-sm opacity-40">Created: {todo.dateCreated}</p>
+                            
+                            <p className={` ${todo.dateUpdated ? "" : "hidden"}  text-sm opacity-40`}>Updated: {todo.dateUpdated}</p>
                             <div className='has-tooltip'>
                                 <span className='tooltip rounded shadow-lg p-1 absolute -top-3 -right-2 px-2 bg-stone-900 text-white-500 -mt-8'>Priority</span>
                                 <p className="text-sm mb-4 absolute -top-2 -right-2 px-2 bg-green-400 rounded-full">{todo.priority}</p>
